@@ -79,3 +79,14 @@ for w, k, L, expected in extensionExamples:
         bsOk = ok and all(len(group) <= L for group in bsGroups)
     status = "PASS " if (bsAnswer == expected and bsOk) else "FAIL "
     print(f"{status}Binary Search: {bsAnswer}")
+
+# Bad input: every method must refuse an impossible k
+for name, method in METHODS.items():
+    for w, k in [([7, 2, 5], 0), ([7, 2, 5], 4)]:
+        try:
+            method(w, k)
+            print(f"FAIL {name}: no error for k = {k}")
+        except ValueError:
+            print(f"PASS {name}: ValueError for k = {k}")
+        except Exception as e:
+            print(f"FAIL {name}: wrong error for k = {k} ({type(e).__name__})")
