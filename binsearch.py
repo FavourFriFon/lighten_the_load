@@ -86,3 +86,29 @@ def binary_search_partition_L(weights, k, L):
         else:
             lo = mid + 1
     return lo
+
+def recover_groups_L(weights, k, X, L):
+    """Pack in order with weight limit X and at most L boxes per bag,
+    closing a bag early when the boxes left are only just enough for the bags still needed,
+    so we return exactly k groups. Added by Favour (Member A) for the extension tests."""
+    n = len(weights)
+    groups, current, cur_sum = [], [], 0
+    for i, w in enumerate(weights):
+        boxes_left = n - i
+        bags_left = k - len(groups)
+        if current and (cur_sum + w > X or len(current) == L or boxes_left < bags_left):
+            groups.append(current)
+            current, cur_sum = [], 0
+        current.append(w)
+        cur_sum += w
+    groups.append(current)
+    return groups
+
+
+def solve_L(weights, k, L):
+    """Like solve, but with at most L boxes per group.
+    Returns (answer, groups), or None if no valid split exists (k * L < n)."""
+    best = binary_search_partition_L(weights, k, L)
+    if best is None:
+        return None
+    return best, recover_groups_L(weights, k, best, L)
