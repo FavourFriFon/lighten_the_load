@@ -2,7 +2,8 @@ INF = float("inf")
 
 def DynamicProgramming_Partition(arr, k, L = None):
     n = len(arr)
-    assert 1 <= k <= n
+    if not 1 <= k <= n:
+        raise ValueError("k must be between 1 and len(arr)")
     if L is not None and k * L < n:
         return None
 
