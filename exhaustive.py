@@ -1,3 +1,8 @@
+"""this simply contains  brute force (exhaustive search) and the answer checker originally written by Suzie .
+"""
+from itertools import combinations
+import math
+
 def sums(w):
     """Return P where P[0] = 0 and P[i] = w[0] + ... + w[i-1].  len(P) == len(w) + 1."""
     prefix = [0]
