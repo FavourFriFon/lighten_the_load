@@ -45,4 +45,37 @@ for trial in range(1000):
             print(f"FAIL {name}: Boxes {w}, k={k}, expected {expected}, got {answer}, groups {groups} [{reason}]")
 
     print(f"Random checks:  {failures} failures out of 1000 inputs")
+    
 
+# Extension : at most L boxes per group  (boxes, k, L, expected answer or None)
+extensionExamples = [
+    ([7, 2, 5, 10, 8], 3, 2, 15),
+    ([7, 2, 5, 10, 8], 2, 2, None),
+    ([7, 2, 5, 10, 8], 5, 1, 10),
+    
+]
+
+for w, k, L, expected in extensionExamples:
+    print(f"Boxes {w}, k={k}, L={L}, expected {expected}")
+
+    dpResult= DynamicProgramming_Partition(w, k, L)
+    if dpResult is None:
+        dpAnswer = None
+        dpOk = True
+    else:
+        dpAnswer, dpGroups = dpResult
+        ok,reason = checkSplit(w, k, dpAnswer, dpGroups)
+        dpOk = ok and all(len(group) <= L for group in dpGroups)
+    status = "PASS " if (dpAnswer == expected and dpOk) else "FAIL "
+    print(f"{status}DP: {dpAnswer}")
+
+    bsResult = solve_L(w, k, L)
+    if bsResult is None:
+        bsAnswer = None
+        bsOk = True
+    else:
+        bsAnswer, bsGroups = bsResult
+        ok, reason = checkSplit(w, k, bsAnswer, bsGroups)
+        bsOk = ok and all(len(group) <= L for group in bsGroups)
+    status = "PASS " if (bsAnswer == expected and bsOk) else "FAIL "
+    print(f"{status}Binary Search: {bsAnswer}")
