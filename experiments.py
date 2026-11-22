@@ -236,9 +236,9 @@ def e5(limitSeconds=60):
 
 
 # Run the experiments. To skip one, put # at the start of its line.
-#e1()
-#e2()
-#e3()
+e1()
+e2()
+e3()
 e4()
 e5()
 print("Done. The graphs are saved as e1_size.png to e5_bruteforce.png in this folder.")
