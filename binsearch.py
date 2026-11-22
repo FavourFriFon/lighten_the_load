@@ -1,3 +1,10 @@
+"""Binary search (Parts iii and iv). Written by Donna.
+
+Finds the smallest weight limit that lets us pack the boxes into k groups,
+then returns those groups. Also handles the extra rule of at most L boxes per group.
+Step-by-step walkthrough: binary_search_sol.ipynb
+"""
+
 def feasible(weights, k, X):
     """Return True if the boxes can be packed, in order, into at most k bags
     of capacity X. Assumes X >= max(weights)."""
