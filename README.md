@@ -69,8 +69,8 @@ Every line should say PASS, and the random checks should report 0 failures.
 python experiments.py
 ```
 
-This takes about 24 minutes, mostly E5. Each experiment times the methods (median of 5 runs;
-3 for DP in E3 and E4; 1 for brute force in E5) and saves a graph in the repository folder.
+This takes about 25 minutes, mostly E5. Each experiment times the methods (median of 5 runs;
+3 for DP in E3 and E4; 1 for brute force in E5) and saves a graph in the repository folder.To skip it, put # in front of e5() at the bottom of experiments.py
 Inputs come from fixed random seeds, so they are the same on every machine. Times differ between
 machines, but the growth patterns should match.
 
