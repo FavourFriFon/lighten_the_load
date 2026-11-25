@@ -1,4 +1,4 @@
-"""Binary search (Parts iii and iv). Written by Donna.
+"""Binary search
 
 Finds the smallest weight limit that lets us pack the boxes into k groups,
 then returns those groups. Also handles the extra rule of at most L boxes per group.
@@ -22,6 +22,8 @@ def feasible(weights, k, X):
 def binary_search_partition(weights, k, verbose=False):
     """Return the minimum possible largest batch sum when splitting
     `weights` (in order) into k consecutive groups. O(n log S) time."""
+    if not 1 <= k <= len(weights):
+        raise ValueError("k must be between 1 and len(weights)")
     lo, hi = max(weights), sum(weights)
     rnd = 0
     while lo < hi:
@@ -76,6 +78,8 @@ def feasible_L(weights, k, X, L):
 def binary_search_partition_L(weights, k, L):
     """Minimum largest batch sum with at most L boxes per group.
     Returns None if no valid split exists (k * L < n)."""
+    if not 1 <= k <= len(weights):
+        raise ValueError("k must be between 1 and len(weights)")
     if k * L < len(weights):
         return None
     lo, hi = max(weights), sum(weights)
