@@ -3,7 +3,7 @@
 The owners' files keep their own function names; this file only adapts them.
 """
 from exhaustive import bruteForce
-from dp import DynamicProgramming_Partition
+from DynamicProgramming_Partition import DynamicProgramming_Partition
 from binsearch import solve as binarySearchSolve
 
 METHODS = {
