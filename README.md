@@ -14,6 +14,7 @@ We solve the problem three ways and check that they always agree.
 | Brute force (Part i) | `exhaustive.py` | Suzie | O(C(n−1, k−1) · k) | O(n) |
 | Dynamic programming (Part ii) | `DynamicProgramming_Partition.py` | Joycelyn | O(k n²) | O(k n) |
 | Binary search (Parts iii and iv) | `binsearch.py` | Donna | O(n log S) | O(n) |
+| code comparison and experiments(Parts v) | `experiments.py`, `main.py`|Favour 
 
 S is the total of all workloads. Every method returns `(answer, groups)`: the heaviest batch,
 and the k batches themselves.
